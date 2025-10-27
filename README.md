@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+一、说明：
 
-## Getting Started
+软件旨在简化旅行规划过程，通过 AI 了解用户需求，自动生成详细的旅行路线和建议，并提供实时旅行辅助。
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+二、核心功能：
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1、智能行程规划: 用户可以通过语音（或文字，语音功能一定要有）输入旅行目的地、日期、预算、同行人数、旅行偏好（例如：“我想去日本，5 天，预算 1 万元，喜欢美食和动漫，带孩子”），AI 会自动生成个性化的旅行路线，包括交通、住宿、景点、餐厅等详细信息。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2、费用预算与管理: 由 AI 进行预算分析，记录旅行开销（推荐可以使用语音）。
 
-## Learn More
+3、用户管理与数据存储:
 
-To learn more about Next.js, take a look at the following resources:
+注册登录系统: 用户可以保存和管理多份旅行计划。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+云端行程同步: 旅行计划、偏好设置、费用记录等数据云端同步，方便多设备查看和修改。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+三、技术栈（ Web）:自选，以下仅提供一些建议，不是严格要求。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+语音识别：基于科大讯飞或其他语音识别 API 提供语音识别功能
+
+地图导航：基于高德或百度地图 API 提供地理位置服务和导航功能
+
+数据库/认证： Supabase，或Firebase Authentication 和 Firestore，或其它你认为合适的服务。
+
+行程规划和费用预算：通过大语言模型完成形成规划和费用预算的估计，大语言模型 API 自选
+
+UI/UX： 地图为主的交互界面，清晰的行程展示，美观的图片。
+
+
+
+四、提交要求
+
+
+
+提交一个 pdf 文件，该文件包含 GitHub repo 地址和 readme 文档。
+
+
+
+项目代码提交在 GitHub 上，并提供可以直接下载运行的 docker image 文件和如何运行的 readme 文档（如果你用的不是阿里云的 API key（助教有阿里云百炼平台的 key），请将 key 提交在 readme 文档中，并保证 3 个月内可用，供助教批改作业使用）。保留尽可能多的、详细的GitHub 提交记录。
+
+
+
+PS. 可以通过 Github Actions 将项目打包成 Docker 镜像并推送到阿里云镜像仓库中，相关的操作可以查阅官方文档或通过大模型完成。
+
+
+
+五、注意事项
+
+切记不要将任何 API key 写在代码中，尤其是 GitHub 上公开的代码库。建议在程序设置页面增加一个输入 key 的输入窗口或通过配置文件来指定 API Key。
