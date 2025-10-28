@@ -4,6 +4,8 @@ export interface TripPlan {
     days: DayPlan[];
     budget: Budget;
     // ... 其他元数据
+    // destination:
+    destinations: string[];
 }
 
 export interface DayPlan {
@@ -38,4 +40,13 @@ export interface Expense {
     category: 'Food' | 'Accommodation' | 'Transportation' | 'Shopping' | 'Entertainment';
     date: string;
     notes: string;
+}
+
+// 描述从数据库中获取的、已保存的行程
+export interface SavedTrip {
+    id: string; // 数据库生成的 UUID
+    user_id: string; // 用户的 UUID
+    created_at: string; // 数据库生成的时间戳
+    title: string; // AI 生成的标题
+    plan_data: TripPlan; // 完整的 AI 生成的 JSON 数据
 }

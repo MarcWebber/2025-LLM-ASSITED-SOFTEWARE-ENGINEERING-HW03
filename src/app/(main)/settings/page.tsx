@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 // 定义 Key 的常量
 export const API_KEY_STORAGE_KEY = "APP_LLM_API_KEY";
-export const BAIDU_MAP_AK_STORAGE_KEY = "APP_BAIDU_MAP_AK"; // <-- 修改
+export const BAIDU_MAP_AK_STORAGE_KEY = "APP_BAIDU_MAP_AK";
 
 export default function SettingsPage() {
     const [apiKey, setApiKey] = useState("");
