@@ -102,7 +102,7 @@ export default function TripsPage() {
     }
 
     return (
-        <div className="container py-8">
+        <div className="py-8">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold">我的行程</h1>
                 <Button asChild>

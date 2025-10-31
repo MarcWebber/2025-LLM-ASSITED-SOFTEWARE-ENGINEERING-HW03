@@ -39,7 +39,7 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="container max-w-2xl py-8">
+        <div className="py-8">
             <h1 className="text-3xl font-bold mb-6">应用设置</h1>
 
             <div className="space-y-6">

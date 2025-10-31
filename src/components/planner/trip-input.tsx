@@ -77,13 +77,7 @@ export function TripInput({ onGenerate, isLoading, prompt, setPrompt }: TripInpu
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <Textarea
-                placeholder="例如：“我想去日本，5天，预算 1 万元，喜欢美食和动漫，带孩子”"
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                rows={5}
-                disabled={isLoading}
-            />
+
 
             <div className="flex flex-wrap gap-2">
                 {quickTags.map((tag) => (
@@ -98,6 +92,14 @@ export function TripInput({ onGenerate, isLoading, prompt, setPrompt }: TripInpu
                     </Badge>
                 ))}
             </div>
+
+            <Textarea
+                placeholder="例如：“我想去日本，5天，预算 1 万元，喜欢美食和动漫，带孩子”"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                rows={5}
+                disabled={isLoading}
+            />
 
             <div className="flex justify-between items-center gap-2">
                 <Button
@@ -118,9 +120,9 @@ export function TripInput({ onGenerate, isLoading, prompt, setPrompt }: TripInpu
                 <Button
                     type="submit"
                     disabled={isLoading || !prompt || !prompt.trim()}
-                    className="w-full"
+                    className="flex items-center gap-2"
                 >
-                    <Sparkles className="mr-2 h-4 w-4" />
+                    <Sparkles className="" />
                     {isLoading ? "AI 正在规划中..." : "生成智能行程"}
                 </Button>
             </div>

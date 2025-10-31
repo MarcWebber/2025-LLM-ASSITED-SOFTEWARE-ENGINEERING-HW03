@@ -30,14 +30,15 @@ import {
     ShoppingBag,
 } from "lucide-react";
 
-// 导入我们在 lib/types.ts 中定义的类型
 import type { TripPlan, Activity } from "@/lib/types";
 
+// 1. 更新 Props 接口
 interface TimelineViewProps {
     plan: TripPlan | null;
+    onActivityClick: (activity: Activity) => void; // 新增
 }
 
-// 图标映射
+// 图标映射 (保持不变)
 const iconMap: { [key: string]: React.ElementType } = {
     Attraction: Camera,
     Restaurant: Utensils,
@@ -47,15 +48,14 @@ const iconMap: { [key: string]: React.ElementType } = {
     Other: MapPin,
 };
 
-// 饼图颜色
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
-export function TimelineView({ plan }: TimelineViewProps) {
+// 2. 接收新的 prop
+export function TimelineView({ plan, onActivityClick }: TimelineViewProps) {
     const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
 
     if (!plan) return null;
 
-    // 格式化预算数据以适应 PieChart
     const budgetData = plan.budget?.breakdown.map((item) => ({
         name: item.category,
         value: item.amount,
@@ -68,8 +68,9 @@ export function TimelineView({ plan }: TimelineViewProps) {
     return (
         <div className="space-y-6">
 
-            {/* M2.1 AI 预算分析 */}
+            {/* 预算分析卡片 (保持不变) */}
             <Card>
+                {/* ... (内部代码保持不变) ... */}
                 <CardHeader>
                     <CardTitle>AI 预算分析 (M2.1)</CardTitle>
                 </CardHeader>
@@ -101,7 +102,7 @@ export function TimelineView({ plan }: TimelineViewProps) {
                 </CardContent>
             </Card>
 
-            {/* M1.2.5 时间线视图 */}
+            {/* 每日行程 */}
             <h2 className="text-2xl font-bold">每日行程 (M1.2.5)</h2>
             <Accordion type="multiple" defaultValue={["day-0"]} className="w-full">
                 {plan.days.map((day, index) => (
@@ -119,7 +120,11 @@ export function TimelineView({ plan }: TimelineViewProps) {
                                         <Card
                                             key={actIndex}
                                             className="cursor-pointer hover:shadow-md transition-shadow"
-                                            onClick={() => handleActivityClick(activity)} // M1.3.1
+                                            // 3. 关键修改：同时触发内部弹窗和外部地图聚焦
+                                            onClick={() => {
+                                                handleActivityClick(activity); // 触发弹窗
+                                                onActivityClick(activity);    // 触发地图
+                                            }}
                                         >
                                             <CardHeader>
                                                 <CardTitle className="flex items-center gap-2">
@@ -139,8 +144,9 @@ export function TimelineView({ plan }: TimelineViewProps) {
                 ))}
             </Accordion>
 
-            {/* M1.3.1 查看详情弹窗 */}
+            {/* 弹窗 (保持不变) */}
             <Dialog open={!!selectedActivity} onOpenChange={() => setSelectedActivity(null)}>
+                {/* ... (内部代码保持不变) ... */}
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>{selectedActivity?.name}</DialogTitle>
