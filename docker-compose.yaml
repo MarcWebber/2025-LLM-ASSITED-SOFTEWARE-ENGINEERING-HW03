@@ -1,0 +1,24 @@
+# 使用一个现代的 Compose 版本
+version: '3.8'
+
+services:
+  # 为您的应用服务命名 (例如 "app")
+  app:
+    # 1. 引用您在本地构建的镜像名称
+    image: ai-trip-planner
+
+    # 2. 设置容器名称 (等同于 --name)
+    container_name: ai-planner
+
+    # 3. 设置端口映射 (等同于 -p)
+    ports:
+      - "3000:3000"
+
+    # 4. 环境变量 (等同于 -e)
+    #    我们从 .env 文件中读取这些值
+    environment:
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+
+    # 5. (推荐) 设置重启策略
+    restart: unless-stopped

@@ -1,0 +1,14 @@
+# 忽略所有 node_modules 目录
+**/node_modules
+
+# 忽略 Next.js 的构建缓存
+.next
+
+# (!! 极其重要 !!) 忽略本地环境变量文件
+.env.local
+
+# 忽略 Git 和 IDE 目录
+.git
+.gitignore
+.idea
+.vscode

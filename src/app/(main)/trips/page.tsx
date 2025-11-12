@@ -25,8 +25,9 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Loader2, Trash, Eye, PlusCircle } from "lucide-react";
+import {Loader2, Trash, Eye, PlusCircle, Terminal} from "lucide-react";
 import { toast } from "sonner";
+import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 
 export default function TripsPage() {
     const { session } = useAuth();

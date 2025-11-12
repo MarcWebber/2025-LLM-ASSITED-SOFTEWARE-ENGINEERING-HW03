@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { buildPrompt } from "./prompt-template"; // 导入我们刚创建的 Prompt
-import type { TripPlan } from "@/lib/types"; // 导入我们的类型
+import {NextRequest, NextResponse} from "next/server";
+// import { buildPrompt } from "./prompt-template"; // 导入我们刚创建的 Prompt
+import type {TripPlan} from "@/lib/types";
+import {buildPrompt} from "@/app/api/plan-trip/prompt-template"; // 导入我们的类型
 
 // 阿里云灵积 (DashScope) API 的调用地址
 // 我们选用 qwen-plus，这是一个性能和质量均衡的强大模型
@@ -10,14 +11,14 @@ const MODEL_NAME = "qwen-plus"; // 您也可以换成 "qwen-max" 或 "qwen-turbo
 export async function POST(req: NextRequest) {
     try {
         // 1. 解析来自前端的请求体
-        const { prompt: userInput, apiKey } = await req.json();
+        const {prompt: userInput, apiKey} = await req.json();
         console.log("收到的用户输入:", userInput);
 
         if (!userInput) {
-            return NextResponse.json({ message: "Prompt 缺失" }, { status: 400 });
+            return NextResponse.json({message: "Prompt 缺失"}, {status: 400});
         }
         if (!apiKey) {
-            return NextResponse.json({ message: "API Key 缺失" }, { status: 400 });
+            return NextResponse.json({message: "API Key 缺失"}, {status: 400});
         }
 
         // 2. 构建结构化的 Prompt
@@ -33,7 +34,7 @@ export async function POST(req: NextRequest) {
                 // DashScope 支持 "json_object" 模式，这能极大提高 JSON 输出的稳定性
                 result_format: "json_object",
             },
-            "debug":{}
+            "debug": {}
         };
 
         // 4. 发起 fetch 请求
@@ -87,8 +88,8 @@ export async function POST(req: NextRequest) {
         // 统一处理所有错误
         console.error("plan-trip API 捕获到错误:", error);
         return NextResponse.json(
-            { message: error.message || "服务器内部错误" },
-            { status: 500 }
+            {message: error.message || "服务器内部错误"},
+            {status: 500}
         );
     }
 }
