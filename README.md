@@ -13,8 +13,9 @@ NEXT_PUBLIC_SUPABASE_URL=https://fperesikrygaqfmnuhrm.supabase.co
 
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZwZXJlc2lrcnlnYXFmbW51aHJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2MTg4NzksImV4cCI6MjA3NzE5NDg3OX0.XBquq5_HaRNGbFdD3O8hVTuN6Te4JkbhdFv5jjW6Euc
 
-## 链接
 
+## REPO链接
+https://github.com/MarcWebber/2025-LLM-ASSITED-SOFTEWARE-ENGINEERING-HW03
 
 ## 使用说明
 ### 命令行操作
@@ -27,5 +28,3 @@ docker run -d -p 3000:3000 --name ai-trip-planner flyingzihao/ai-trip-planner:1.
 docker-compose up -d
 ```
 进入设置页面，填写百度API-KEY和百炼模型API-KEY，保存后即可使用。
-
-## REPO链接
